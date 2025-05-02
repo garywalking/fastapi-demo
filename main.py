@@ -15,4 +15,4 @@ def add(a: int, b: int):
 
 @app.get("/")
 def read_root():
-    return {"message": "欢迎使用我的 FastAPI 小项目！你可以访问 /docs 查看 API 文档。都来看看哈"}
+    return {"message": "欢迎使用我的 FastAPI 小项目！你可以访问 /docs 查看 API 文档。都来看看哈，不看不要紧"}

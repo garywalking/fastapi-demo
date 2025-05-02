@@ -1,0 +1,21 @@
+# 忽略虚拟环境文件夹
+venv/
+.venv/
+
+# Python 编译文件
+__pycache__/
+*.py[cod]
+*.pyo
+
+# VS Code 配置文件（可选）
+.vscode/
+
+# 忽略系统文件
+.DS_Store
+Thumbs.db
+
+# 环境依赖文件（如果你用的是 pdm，可以保留 pyproject.toml 和 pdm.lock）
+*.log
+
+# 忽略 .env 文件（如果你以后有环境变量）
+.env

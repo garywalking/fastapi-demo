@@ -1,0 +1,27 @@
+[project]
+name = "fastapi-html-demo"
+version = "0.1.0"
+description = "一个小小的 FastAPI + HTML 示例"
+authors = ["你的名字 <you@example.com>"]
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "jinja2"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+skip-string-normalization = false
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests"
+]

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+import os
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -16,3 +17,8 @@ def add(a: int, b: int):
 @app.get("/")
 def read_root():
     return {"message": "欢迎使用我的 FastAPI 小项目！你可以访问 /docs 查看 API 文档。都来看看哈，不看不要紧"}
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)

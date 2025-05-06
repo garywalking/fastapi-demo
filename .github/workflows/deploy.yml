@@ -1,6 +1,6 @@
 name: CI/CD Pipeline to Fly.io
 
-   on:
+on:
      push:
        branches:
          - main

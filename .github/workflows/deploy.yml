@@ -24,7 +24,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install flyctl
-        run: curl -L https://fly.io/install.sh | sh
+        run: |
+          curl -L https://fly.io/install.sh | sh
+          echo "::add-path::$(echo ~/.fly/bin)"
 
       - name: Verify flyctl installation
         run: flyctl --version

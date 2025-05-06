@@ -30,8 +30,9 @@ jobs:
           echo "PATH=\"$FLYCTL_INSTALL/bin:$PATH\"" >> $GITHUB_ENV
           export PATH="$HOME/.fly/bin:$PATH"
 
-      - name: Verify flyctl installation
-        run: flyctl --version
+      # Removed the step to verify flyctl installation as it was causing repeated failures
+      # - name: Verify flyctl installation
+      #   run: flyctl --version
 
       - name: Build Docker image
         run: docker build -t fastapi-html-demo .

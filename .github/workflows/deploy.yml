@@ -1,40 +1,40 @@
 name: CI/CD Pipeline to Fly.io
 
 on:
-     push:
-       branches:
-         - main
+  push:
+    branches:
+      - main
 
-   jobs:
-     build-and-deploy:
-       runs-on: ubuntu-latest
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-       steps:
-         - name: Checkout code
-           uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-         - name: Set up Python
-           uses: actions/setup-python@v4
-           with:
-             python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-         - name: Install dependencies
-           run: |
-             python -m pip install --upgrade pip
-             pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-         - name: Install flyctl
-           run: curl -L https://fly.io/install.sh | sh
+      - name: Install flyctl
+        run: curl -L https://fly.io/install.sh | sh
 
-         - name: Build Docker image
-           run: docker build -t fastapi-html-demo .
+      - name: Build Docker image
+        run: docker build -t fastapi-html-demo .
 
-         - name: Log in to Fly.io
-           env:
-             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-           run: flyctl auth docker
+      - name: Log in to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl auth docker
 
-         - name: Deploy to Fly.io
-           env:
-             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-           run: flyctl deploy -a fastapi-demo-fornxa --remote-only
+      - name: Deploy to Fly.io
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy -a fastapi-demo-fornxa --remote-only
